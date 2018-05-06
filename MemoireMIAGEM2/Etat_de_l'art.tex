@@ -4,82 +4,100 @@
 
 \subsection{Introduction}
 
-La mise en place d'un générateur du code automatique d’après une Modélisation DOMIS nécessite une grande étude sur tout existant dans ce domaine de modélisation, Présisement le concept B-ADSC sur lequel se base DOMIS ainsi que l'étude et l'analyse de ce dernier.
+Un web Service Composite est  le résultat des différentes combinaisons de plusieurs web Services qui vise à répondre aux requêtes complexes des utilisateurs.
+Pendant l'exécution des Web services composites (CWS), un Web service composant (WS) peut échouer ou tomber en panne, et pour cela il existe des stratégies qui permettent la réparation du problème telles que  la réexécution du WS,la réplication,Récupération arrière ou point de contrôle.
+La question qui se pose, quelle est la meilleure stratégie de récupération ? 
+Deux études existantes ont répondu a cette question en proposant des solutions pour savoir la stratégie la plus convenable (Création d’un Modèle/ Création d’un Framwork). 
+Le présent chapitre décrit une présentation des web service composite avec les différentes stratégie de récupération ainsi que les deux études existantes qui répondent à notre problématique.
+
+\subsection{Web Service Composite}
+
+Un Web service composite est le résultat d’une composition de plusieurs Web services, et qui peut à son tour entrer dans une autre composition.
+Les web services composites ont pour objectif  la production des services complexes pour répondre à des demandes d’utilisateurs complexes. 
 
 
-\subsection{Modélisation des systèmes Complexes}
+La structure d’un Web service composite peut être générée manuellement ou automatiquement. Selon les requêtes demandées, les utilisateurs peuvent spécifier manuellement comment les fonctionnalités des Web service seront combinées ou bien  un composeur qui prend la responsabilité d’une génération automatique des Web service Composite en fonction de la demande, pour qu’ils seront finalement exécuté par un moteur d’exécution.
 
-B-ADSc : "Bucki – Analyse décisionnelle des Systèmes complexes" est une méthode dédiée à la conception et à l’analyse des systèmes et des organisations. Elle se distingue par la prise en compte effective des opérateurs humains avec leurs autonomies, leurs politiques de production, leurs procédés de prise de décision, leur retour d’expérience...
-
-Dans la conception du Système d'Information, les flux des données et des traitements sont soumis aux flux des décisions : en cela B-ADSc généralise les analyses fonctionnelles. Ainsi, le Système d’information est intimement lié à l’Organisation des acteurs (hommes, machines) jusqu'à se confondre.
-
-Conçue dans les années 1990 par Janusz Bucki \cite{B-ADSC}, docteur en mathématiques et ingénieur automaticien, alors qu’il conduisait des réalisations dans le domaine de l’industrie et de la défense en particulier pour la conception des systèmes à risque et à Intelligence distribuée, cette approche s’est étendue depuis au tertiaire, au monde de l'Internet - Internet des objets - et donne lieu à un enseignement.
-
-Selon cette approche systémique, la caractéristique la plus importante de toute organisation est sa capacité à élaborer des Décisions relatives au pilotage des processus : elle s'attache donc à modéliser et à analyser les organisations selon l'ordonnancement des Décisions et non selon l'agencement des Fonctions...
-
-Pour B-ADSc, une organisation correspond à une hiérarchie opérationnelle d’activités dans laquelle chaque activité représente un «centre élémentaire de prise de décision» pouvant être piloté par un homme ou par une machine.\cite{badsc}
-
-
-\subsection{ Le concept d’activité}
-
-En Analyse fonctionnelle, l’accent est mis sur les données (schémas de données) et leur transformation ou traitement (schémas des traitements). Ainsi, l’objectif de l’analyste serait plutôt de mettre en exergue le « comment » du système (voir schéma ci-dessous) et pas forcément le « pourquoi de ce comment ».
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.5\linewidth]{images/analyse_fonctionnelle}
+\includegraphics[width=1\linewidth]{images/CWS.jpg}
 \end{center}
-\caption{L'analyse fonctionnelle}
-\label{fig:9}
+\caption{Web service composite}
+\label{fig:1}
 \end{figure}
 
-Ici, la fonction est comparable à une boîte noire. Elle peut être décomposée en sous-boîtes noires, l'organisation de ces boîtes n'ayant pas pour but de refléter l'organisation des acteurs. En automatisation, la notion de boucle de régulation permet d’adjoindre un « retour » (ou feedback) afin de passer du traitement à la régulation. La fonction peut donc, selon l’évolution du processus, être régulée.
 
-B-ADSc positionne systématiquement le "Comment" dans le contexte de son "Pourquoi" et fait passer du "traitement des données" au "pilotage/régulation des situations" : piloter/gérer un processus signifie décider et contrôler son évolution afin de l’amener à une situation concordant avec les objectifs poursuivis.
-La compréhension et l'interprétation des évolutions du processus s’opèrent dans le contexte des buts du décideur, exemple:
-Evolution du processus : "je suis chez moi et il commence à pleuvoir"...
-si mon but initial est d’arroser le jardin alors - c’est bon – "la nature s’en charge"si mon but est d’aller au théâtre alors - c’est mauvais - "risque d’être mouillé".
 
-Les objectifs et le processus évoluant, le pilotage doit être perpétuellement réadapté : les écarts entre objectifs et réalité doivent diminuer ou, à minima, s’inscrire dans un seuil de tolérance (qui permet d’amener la situation – le processus – au plus près des objectifs poursuivis).
-B-ADSc place ici l'activité à l’intersection de deux boucles de régulation qui prennent en compte l’évolution du processus (le comment) et celle des objectifs (le pourquoi).
+Les Web services composite peuvent être représentés sous différents formes et structures en indiquant l’ensemble des informations et instructions relatives, comme l’ordre d’exécution et le comportement des Web services composants ainsi que les flux de données  et de contrôle.
+La représentation peut être sous forme de Workflows, Graph ou réseau de Petri.
+
+
+
+Les différents travaux et articles scientifiques sur la composition des services Web 
+considèrent la composition de services Web comme étant un moyen efficace 
+pour créer, exécuter, et maintenir des services qui dépendent d’autres services. Les auteurs ont défini le cycle de vie d’une composition de services Web reposant à partir de six activités [Benatalla] [Céline Lopez-Velasco] : 
+
+- L’encapsulation de services natifs (Wrapping services): Cette première activité permet de  s’assurer que tout service peut être appelé lors d’ une composition, indépendamment de son  modèle de données, de son format de message, et de son protocole d’interaction. 
+
+
+- L’établissement d’accord d’externalisation (Setting outsourcing agreements): Cette seconde activité consiste à négocier, établir, et appliquer des obligations contractuelles entre les services.
+
+
+- L’assemblage de services composants (Assembling composite services):Cette activité permet  de spécifier, à un haut niveau d’abstraction, l’ensemble des services à composer afin d’atteindre  l’objectif attendu. Cet assemblage comporte une phase d’identification des services et de spécification de leurs interactions conformément aux descriptions et aux accords entre services. 
+
+
+- L’exécution de services composants (Executing services):Cette activité consiste en l’exécution des spécifications de la composition précédemment définies. 
+
+
+Le contrôle de l’exécution de services composites (Monitoring services): La phase de contrôle permet de superviser l’exécution de la composition en vérifiant, par exemple, l’accès aux services, les changements de statut, les échanges de messages. Ce contrôle permet de détecter des violations de contrats, de mesurer les performances des services appelés et de prédire des exceptions. 
+
+
+L’évolutivité des services (Evolving services) :Cette dernière phase permet de faire évoluer la composition en modifiant les altérations de l’organisation de services, en utilisant de nouveaux  services, ou en prenant en compte les retours de la phase de contrôle. 
+[Céline Lopez-Velasco]
+
+
+
+\subsection{ Contrôle d'exécution (a voir) }
+
+
+
+\subsection{ Tolérance aux pannes}
+
+La tolérance aux pannes est la manière dont un système informatique, un système électronique ou un réseau répond à une défaillance matérielle ou logicielle. Le terme fait essentiellement référence à la capacité d'un système à prendre en compte les défaillances ou les dysfonctionnements d’un ou de plusieurs de ses composants, tout en fournissant un service ininterrompu, et cette capacité peut être fournie par un logiciel, un matériel ou une combinaison des deux.
+
+Le but est d'éviter une panne catastrophique qui pourrait résulter d'un seul point de défaillance. 
+
+\subsubsection{Défaillance des Web Service Composite}
+
+Comme toutes les technologie, Les Web services Composite ne peuvent pas s’échapper aux défaillances d’exécution à 100 \%, car des pannes peuvent survenir à tout moment au niveau du matériel, du moteur d’exécution ou tout simplement du défaillance d’un Web service composant.
+Cependant les Web Services Composite fonctionne potentiellement de manière réduite (en mode dégradé).
+
+
+Soulever et relever les défis posés par les problématiques de résilience et de fiabilité des web services composite nécessite en premier lieu l’analyse  des caractéristiques des pannes dans  leur exécution.
+On peut distinguer principalement dans l’environnement d’exécution des Web services Composites deux classe de pannes. 
+
+    - Panne de nature silencieuse: (silent faults) Sont les pannes indétectables, ou qui sont détectées après une très grande durée depuis leurs déclenchements ce qui implique nécessairement que le résultat fourni est incorrect. 
+    Ces pannes sont génériques pour tous les WS. Ils empêchent les WS de répondre.
+
+
+    - Panne de nature logique: (Logic fault): Contrairement au pannes silencieuse, les panne logiques sont spécifiques aux différents Web service, et les attributs des entrées représente la cause principale de ces pannes.
+    Ce genre d’erreur est difficile d’être identifié par le moteur d’exécution des Web services composites.
+
+\subsubsection{Exécution tolérante aux pannes des CWS}
+
+Le contrôle d'exécution des CWS peut être centralisé ou distribué:
+
+- centralisé : Un seul coordinateur qui gère toute l’exécution. 
+- distribué : le processus d'exécution se déroule avec la collaboration de plusieurs participants sans coordinateur central.
+
+Le contrôle d’exécution peut être attaché aux Web Service comme il peux etre indépendant.
+
+
+Certaines méthodes indépendantes de tolérance aux pannes dont apparus, telles que les propriétés transactionnelles et la réplication. Les propriétés transactionnelles décrivent implicitement le comportement des CWS en cas d'échec, et sont utilisées pour garantir la propriété transactionnelle d’atomicité.
  
- \begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.5\linewidth]{images/comment_pourquoi}
-\end{center}
-\caption{L'intersection des deux boucles de régulation le comment et le pourquoi}
-\label{fig:10}
-\end{figure}
-La « brique » de base de B-ADSc est une Activité. Elle est régulée (ou pilotée) par les activités de niveau supérieur qui lui délèguent des objectifs et régule (ou pilote) les activités de niveau inférieur qui constituent son processus.
-Ainsi, elle encapsule deux fonctions
-(voir schéma ci-dessous):
+\subsection{Étude 1 : Proposition d'un Modèle:}
 
-• « Fd » pour « Fonction décision » 
+Nous considérons: (i) que les WS peuvent subir des défaillances silencieuses (les erreurs logiques ne sont pas prises en compte); (ii) le moteur d'exécution, en charge de l'exécution du CWS, fonctionne loin des serveurs WS dans des serveurs fiables tels que les clusters, il n'échoue pas, son réseau de données est hautement sécurisé et n'est pas affecté par les fautes WS; (iii) nous supposons que l'information nécessaire pour choisir une stratégie de récupération est connue par le moteur d'exécution "à tout moment pour chaque WS. 
 
-• « Fe » pour « Fonction évaluation » 
 
-Une activité dispose nécessairement de quatre mémoires distinctes :
-
-1.La mémoire des objectifs assignés par le niveau opérationnel supérieur 
-
-2.La mémoire de l'état du processus piloté 
-
-3.La mémoire des buts des décisions prises par l’activité 
-
-4.La mémoire des changements d’état du processus
-
- 
- \begin{figure}[H]
-\begin{center}
-\includegraphics[width=1\linewidth]{images/activite}
-\end{center}
-\caption{L'activité dans B-ADSc}
-\label{fig:11}
-\end{figure}
-
- 
-B-ADSc interprète systématiquement le comportement d’une activité – prise des décisions, évaluation du processus - dans le contexte des objectifs poursuivis :
-Je suis chez moi (« Je » = activité) et il pleut dehors (le « comment » du processus).
-
-• Si mon but initial est d’arroser le jardin alors « c’est bon pour moi » (la nature fera à ma place, je n'ai rien à décider sauf annuler l'arrosage) 
-
-• Si mon but est d’aller au théâtre alors « c’est mauvais pour moi » (je risque d’y arriver mouillé, je décide donc d'annuler ou de prendre un parapluie).\cite{badsc} 
