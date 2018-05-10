@@ -1,12 +1,42 @@
 
- 
-\subsection{Self-Healing}
+\subsection{Introduction}
 
-Nous considérons: (i) que les WS peuvent subir des défaillances silencieuses (les erreurs logiques ne sont pas prises en compte); (ii) le moteur d'exécution, en charge de l'exécution du CWS, fonctionne loin des serveurs WS dans des serveurs fiables tels que les clusters, il n'échoue pas, son réseau de données est hautement sécurisé et n'est pas affecté par les fautes WS; (iii) nous supposons que l'information nécessaire pour choisir une stratégie de récupération est connue par le moteur d'exécution "à tout moment pour chaque WS. 
+Ce chapitre présente l'étude existante avec son ensemble d'approches pour une exécution fiable des services Web composites.
+Cet étude consiste l'exécution auto-corrective (self-healing) d'une manière dynamique et automatique, elle vise le même objectif de ce mémoire mais les méthodologie changent. 
+
+L'ensemble des approches proposés peuvent être présenter sous forme de trois principaux partis.
+Dans un premier temps on va voir une approche pour l'exécution tolérante aux pannes des services Web composite basée sur la récupération en avant et en arrière, et définie par le formalisme de réseaux de Petri Colorés, ensuite sur le même formalisme la deuxième approche consiste la proposition d'un mécanisme de point de contrôle, et finalement après une étude sur l'impact des différentes stratégies de récupération sur les services Web composite, la troisième approche apporte un modèle de décision dynamique de la stratégie de récupération en terme d'impact sur la qualité de service pour la tolérance aux pannes de services Web composites.
+
+
+\subsection{Récupération des CWS Réseaux de Petri Colorés}
+
+En utilisant les réseaux de Petri Colorés les auteurs ont formalisé les services Web composites, leur exécution, et leurs stratégies de tolérance aux pannes, et il ont proposé un framework pour une exécution distribuée fiable et tolérante aux pannes pour les services Web Composites.
+
+Le framework est composé de deux types de composants \cite{1} : 
+
+- Un Coordinateur d'Agents : Composant responsable de la gestion des aspects globaux d'exécution des services Web composites.
+
+- Agents de Service : ils exécutent les services et sont en charge du contrôle de l'exécution et de la tolérance au pannes.
+
+Cette approche fournis les mécanismes de récupération en arrière par compensation, en avant par re-exécution de service et remplacement, la réplication, et le checkpointing, et assure une exécution tolérante aux pannes basé sur un modèle d'exécution distribué.
+
+L'exécution des services Web composite peut être \cite{3} : 
+
+- Séquentiel : Les services se basent sur les résultat des services précédents, et ne peuvent être invoqués tant que les services précédent ne sont pas terminés.
+
+- Parallèle : Les services peuvent être invoqués d'une manière simultanée, car il n'y a pas des dépendances de flux de données entre eux.
+
+Ces deux scénarios d'exécution ont un effet sur la propriété transactionnelle globale du service Web composite, pour cela il faut suivre le flux d'exécution défini par le graphe du service composite pour s'assurer que l'exécution séquentielle et parallèle satisfont la propriété transactionnelle globale.
+
+\subsubsection{Architecture du framework}
+
+Les chercheurs ont proposé un framework dont l'exécution du service composite est gérée par un Coordinateur d'Agents et une collection d'Agents de services, organisés dans architecture trois tiers.
 
 
 
-\subsubsection{Exécution tolérante aux pannes des CWS}
 
-Le contrôle d'exécution des Web services composites peut être centralisé c’est à dire un coordinateur qui va jouer le rôle de la gestion de toute l’exécution,  ou distribué dans lequel le processus d’exécution de déroule avec la collaboration de plusieurs participants sans un coordinateur central. Comme il peut être attaché aux web services composants ou indépendant.
-Certaines méthodes indépendantes de tolérance aux pannes dont apparus, telles que les propriétés transactionnelles et la réplication. Les propriétés transactionnelles décrivent implicitement le comportement des services web en cas d'échec, et sont utilisées pour garantir la propriété transactionnelle d’atomicité.
+\subsection{Modélisation des stratégies de récupération basées sur QoS}
+
+
+
+

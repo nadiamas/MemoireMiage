@@ -94,10 +94,6 @@ service et le demandeur a réussi.
 - Prix: une mesure du coût d’exécution d’un service.
 
 
-\subsection{ Contrôle d'exécution }
-
-(a voir) 
-
 \subsection{Exécution tolérante aux pannes}
 
 La tolérance aux pannes est la manière dont un système informatique, un système électronique ou un réseau répond à une défaillance matérielle ou logicielle. Le terme fait essentiellement référence à la capacité d'un système à prendre en compte les défaillances ou les dysfonctionnements d’un ou de plusieurs de ses composants, tout en fournissant un service ininterrompu, et cette capacité peut être fournie par un logiciel, un matériel ou une combinaison des deux.
@@ -138,10 +134,34 @@ Les services Web composites sont construit à partir d'un ensemble des service q
 
 - Atomique : un service composite est atomique si au moins un de ses services composant est pivot ou pivot retriable. Lorsqu’un service composite atomique se termine avec succès, ses effets demeurent pour toujours et ils ne peuvent pas être annulées. Si l’un de ses services composants tombe en panne, le système est laissé dans un état sémantiquement similaire à celui qu’il avait avant l’exécution du service composite.
 
+
 - Compensable : un service composite est compensable si tous ses services composants sont compensables. Cela signifie qu’il existe un autre service composite, contenant les services qui compensent les services du service composite compensable, qui peut annuler sémantiquement les effets du service composite compensable après son exécution réussie. Comme pour le service composite atomique, si l’un de ses service composants tombe en panne, le système est laissé dans un état sémantiquement similaire à celui qu’il avait avant l’exécution du service composite compensable.
 
 
 - Retriable : un service composite est retriable si tous ses services composants sont retriables. Un service composite retriable garantit l’exécution réussie après un laps de temps limité. Cette propriété doit être combinée avec les propriétés atomiques ou compensables, pour créer les propriétés atomique-retriable (ar) et compensable-retriable (cr).
 
 
+\subsection{Mécanisme de récupération}
 
+En présence des pannes, les propriétés transactionnelles fournis par les services ont une importance dans la création des services composites fiables, car ils assurent un état cohérent de l'ensemble du système.
+
+La stratégie de reprise d'une exécution de service composite dépend de la propriété transactionnelle des services composants.
+Les principaux mécanisme de récupération sont \cite{1} : 
+
+- Récupération en arrière : c'est l'opération de restauration de l’état du système avant l’exécution du service composite ; c’est-à-dire, tous les effets produits par le service en panne sont annulées par rollback, et les effets des services exécutés avant la panne sont sémantiquement annulés en utilisant des techniques de compensation (Fig (a)).
+
+
+- Récupération en avant : c'est l'opération qui permet la réparation du panne afin que le  service composite peut poursuivre son exécution ; les techniques utilisées pour fournir une récupération en avant sont le réessayage de l’invocation de service ou le remplacement du service (Fig (b)).
+
+
+- Récupération sémantique : elle a le même mécanisme que la récupération en arrière, sauf que la récupération sémantique est effectuée après une exécution réussie d’un service composite en compensant l’exécution de ses services composants. L’idée est de laisser le système dans un état sémantiquement proche de l’état qu’il avait avant l’exécution du service composite (Fig (c))
+
+- Checkpointing : c'est l'opération qui permet si une panne survient de continuer l’exécution de la partie du service composite qui n’a pas été affecté par cette panne, tout en retardant l’exécution de la partie affectée (Fig (d))
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\linewidth]{images/techs reparation.jpg}
+\end{center}
+\caption{Stratégies de récupération \cite{1}}
+\label{fig:3}
+\end{figure}
