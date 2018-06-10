@@ -1,16 +1,14 @@
 
-\vspace{1cm}
+\chapter{Concepts}
 
-\section{Concepts}
-
-\subsection{Introduction}
+\section{Introduction}
 
 Un web Service Composite est  le résultat des différentes combinaisons de plusieurs web Services qui vise à répondre aux requêtes complexes des utilisateurs.
 Pendant l'exécution des Web services composites (CWS), un Web service composant (WS) peut échouer ou tomber en panne, et pour cela il existe des stratégies qui permettent la réparation du problème telles que  la réexécution du WS,la réplication,Récupération arrière ou point de contrôle.
 La question qui se pose, quelle est la meilleure stratégie de récupération ? 
 ( a revoir ) 
 
-\subsection{Web Service Composite}
+\section{Service Web Composite}
 
 L'architecture orientée services ( SOA Services Oriented Architecture) est une architecture logicielle qui met en oeuvre un ensemble de services simples (Composants logiciels).
 
@@ -27,7 +25,7 @@ L'architecture orientée services a pour objectif la décomposition d'une foncti
 
 La figure 1 illustre l'architecture orientée services, la contribution de ce mémoire se positionne dans la couche Composition et exécution de services.
 Cette couche fournit une composition des services et se charge du suivi de l’exécution de ces services composites. Un aspect important de cette couche est la résilience aux
-pannes et l’adaptation en fonction des changements dans le système [Rafael Enrique Angarita Arocha].
+pannes et l’adaptation en fonction des changements dans le système \cite{1}.
 
 
 
@@ -53,7 +51,7 @@ La représentation peut être sous forme de Workflows, Graph ou réseau de Petri
 
 
 Les différents travaux et articles scientifiques sur la composition des services Web considèrent la composition de services Web comme étant un moyen efficace 
-pour créer, exécuter, et maintenir des services qui dépendent d’autres services. Les auteurs ont défini le cycle de vie d’une composition de services Web reposant à partir de six activités [Benatalla] [Céline Lopez-Velasco]: 
+pour créer, exécuter, et maintenir des services qui dépendent d’autres services. Les auteurs ont défini le cycle de vie d’une composition de services Web reposant à partir de six activités [Benatalla] \cite{6}: 
 
 - L’encapsulation de services natifs (Wrapping services): Cette première activité permet de  s’assurer que tout service peut être appelé lors d’ une composition, indépendamment de son  modèle de données, de son format de message, et de son protocole d’interaction. 
 
@@ -70,8 +68,7 @@ pour créer, exécuter, et maintenir des services qui dépendent d’autres serv
 - Le contrôle de l’exécution de services composites (Monitoring services): La phase de contrôle permet de superviser l’exécution de la composition en vérifiant, par exemple, l’accès aux services, les changements de statut, les échanges de messages. Ce contrôle permet de détecter des violations de contrats, de mesurer les performances des services appelés et de prédire des exceptions. 
 
 
-- L’évolutivité des services (Evolving services):Cette dernière phase permet de faire évoluer la composition en modifiant les altérations de l’organisation de services, en utilisant de nouveaux  services, ou en prenant en compte les retours de la phase de contrôle. 
-[Céline Lopez-Velasco]
+- L’évolutivité des services (Evolving services):Cette dernière phase permet de faire évoluer la composition en modifiant les altérations de l’organisation de services, en utilisant de nouveaux  services, ou en prenant en compte les retours de la phase de contrôle. \cite{6}
 
 
 
@@ -80,11 +77,11 @@ sur Internet qui sont indépendantes de leur mise en œuvre. les détails d’im
 
 Les services sont décrits en fonction de leur fonctionnalités et des critères de qualité de service (QoS). Dans notre cas, la fonctionnalité d’un service est donnée par les paramètres d’entrée et de sortie.
 
-\subsubsection { Qualité de Service }
+\subsection { Qualité de Service }
 
 La qualité de service (QoS Quality of Service) décrivent les caractéristiques non fonctionnelles du service Web, autrement dits la mesures dans laquelle un ensemble de caractéristiques répond à un besoin ou une attente.
 
-nous considérons les trois critères de qualité suivantes [Rafael Enrique Angarita Arocha] :
+nous considérons les trois critères de qualité suivantes \cite{2} :
 
 - Temps de réponse: le temps estimé nécessaire pour achever une invocation de service ; qui est, la durée entre une demande de service et la réponse du service correspondant.
 
@@ -94,20 +91,20 @@ service et le demandeur a réussi.
 - Prix: une mesure du coût d’exécution d’un service.
 
 
-\subsection{Exécution tolérante aux pannes}
+\section{Exécution tolérante aux pannes}
 
 La tolérance aux pannes est la manière dont un système informatique, un système électronique ou un réseau répond à une défaillance matérielle ou logicielle. Le terme fait essentiellement référence à la capacité d'un système à prendre en compte les défaillances ou les dysfonctionnements d’un ou de plusieurs de ses composants, tout en fournissant un service ininterrompu, et cette capacité peut être fournie par un logiciel, un matériel ou une combinaison des deux.
 
 Le but est d'éviter une panne catastrophique qui pourrait résulter d'un seul point de défaillance. 
 
-\subsubsection{Défaillance des Web Service Composite}
+\subsection{Défaillance des Web Service Composite}
 
 Comme toutes les technologie, Les Web services Composite ne peuvent pas s’échapper aux défaillances d’exécution à 100 \%, car des pannes peuvent survenir à tout moment au niveau du matériel, du moteur d’exécution ou tout simplement du défaillance d’un Web service composant.
 Cependant les Web Services Composite fonctionne potentiellement de manière réduite (en mode dégradé).
 
 
 Soulever et relever les défis posés par les problématiques de résilience et de fiabilité des web services composite nécessite en premier lieu l’analyse  des caractéristiques des pannes dans  leur exécution.
-On peut distinguer principalement dans l’environnement d’exécution des Web services Composites deux classe de pannes. 
+On peut distinguer principalement dans l’environnement d’exécution des Web services Composites deux classe de pannes \cite{2}. 
 
     - Panne de nature silencieuse: (silent faults) Sont les pannes indétectables, ou qui sont détectées après une très grande durée depuis leurs déclenchements ce qui implique nécessairement que le résultat fourni est incorrect. 
     Ces pannes sont génériques pour tous les WS. Ils empêchent les WS de répondre.
@@ -116,7 +113,7 @@ On peut distinguer principalement dans l’environnement d’exécution des Web 
     - Panne de nature logique: (Logic fault): Contrairement au pannes silencieuse, les panne logiques sont spécifiques aux différents Web service, et les attributs des entrées représente la cause principale de ces pannes.
     Ce genre d’erreur est difficile d’être identifié par le moteur d’exécution des Web services composites.
 
-\subsubsection{Exécution tolérante aux pannes des CWS}
+\subsection{Exécution tolérante aux pannes des CWS}
 
 Le contrôle d'exécution des Web services composites peut être centralisé c’est à dire un coordinateur qui va jouer le rôle de la gestion de toute l’exécution,  ou distribué dans lequel le processus d’exécution de déroule avec la collaboration de plusieurs participants sans un coordinateur central. Comme il peut être attaché aux web services composants ou indépendant.
 Certaines méthodes indépendantes de tolérance aux pannes dont apparus, telles que les propriétés transactionnelles et la réplication. Les propriétés transactionnelles décrivent implicitement le comportement des services web en cas d'échec, et sont utilisées pour garantir la propriété transactionnelle d’atomicité.
@@ -141,7 +138,7 @@ Les services Web composites sont construit à partir d'un ensemble des service q
 - Retriable : un service composite est retriable si tous ses services composants sont retriables. Un service composite retriable garantit l’exécution réussie après un laps de temps limité. Cette propriété doit être combinée avec les propriétés atomiques ou compensables, pour créer les propriétés atomique-retriable (ar) et compensable-retriable (cr).
 
 
-\subsection{Mécanisme de récupération}
+\section{Mécanisme de récupération}
 
 En présence des pannes, les propriétés transactionnelles fournis par les services ont une importance dans la création des services composites fiables, car ils assurent un état cohérent de l'ensemble du système.
 

@@ -1,18 +1,23 @@
 
-\subsection{Introduction}
+\vspace{1cm}
+
+\chapter{État de l'art}
+
+\section{Introduction}
 
 Ce chapitre présente l'étude existante avec son ensemble d'approches pour une exécution fiable des services Web composites.
-Cet étude consiste l'exécution auto-corrective (self-healing) d'une manière dynamique et automatique, elle vise le même objectif de ce mémoire mais les méthodologie changent. 
+Cet étude consiste l'exécution auto-corrective (self-healing) d'une manière dynamique et automatique, elle vise le même objectif de ce mémoire mais les méthodologies changent. 
 
-L'ensemble des approches proposés peuvent être présenter sous forme de trois principaux partis.
-Dans un premier temps on va voir une approche pour l'exécution tolérante aux pannes des services Web composite basée sur la récupération en avant et en arrière, et définie par le formalisme de réseaux de Petri Colorés, ensuite sur le même formalisme la deuxième approche consiste la proposition d'un mécanisme de point de contrôle, et finalement après une étude sur l'impact des différentes stratégies de récupération sur les services Web composite, la troisième approche apporte un modèle de décision dynamique de la stratégie de récupération en terme d'impact sur la qualité de service pour la tolérance aux pannes de services Web composites.
+Dans cette étude les chercheurs ont proposé l'approche de l'auto-corrective  (self-healing) qui se base sur les propriétés transactionnelles comme un concept de base pour une tolérance aux pannes automatique, et se base aussi sur les agents à base de connaissances.
+
+Dans un premier temps les auteurs ont proposé une approche pour l'exécution tolérante aux pannes des services Web composite basée sur la récupération en avant et en arrière, et définie par le formalisme de réseaux de Petri Colorés, ensuite sur le même formalisme la deuxième approche consiste la proposition d'un mécanisme de point de contrôle, et finalement après une étude sur l'impact des différentes stratégies de récupération sur les services Web composite, la troisième approche apporte un modèle de décision dynamique de la stratégie de récupération en terme d'impact sur la qualité de service pour la tolérance aux pannes de services Web composites.
 
 
-\subsection{Récupération des CWS Réseaux de Petri Colorés}
+\section{Contrôle d'exécution de services Web composites}
 
 En utilisant les réseaux de Petri Colorés les auteurs ont formalisé les services Web composites, leur exécution, et leurs stratégies de tolérance aux pannes, et il ont proposé un framework pour une exécution distribuée fiable et tolérante aux pannes pour les services Web Composites.
 
-Le framework est composé de deux types de composants \cite{1} : 
+Le framework est composé de deux types de composants \cite{1} \cite{5}: 
 
 - Un Coordinateur d'Agents : Composant responsable de la gestion des aspects globaux d'exécution des services Web composites.
 
@@ -28,7 +33,7 @@ L'exécution des services Web composite peut être \cite{3} :
 
 Ces deux scénarios d'exécution ont un effet sur la propriété transactionnelle globale du service Web composite, pour cela il faut suivre le flux d'exécution défini par le graphe du service composite pour s'assurer que l'exécution séquentielle et parallèle satisfont la propriété transactionnelle globale.
 
-\subsubsection{Architecture du Framework}
+\subsection{Architecture du Framework}
 
 Les chercheurs ont proposé un Framework dont l'exécution du service composite est gérée par un Coordinateur d'Agents et une collection d'Agents de services, organisés dans architecture trois tiers.
 
@@ -60,7 +65,7 @@ Le troisième niveau : consiste l'interaction des agents de services avec l'ense
 
 L'objectif de cet architecture est de répartir la responsabilité de l'exécution d'un service Web composite à travers de plusieurs agents de service, pour que le modèle logique de l'exécuteur proposé permet une exécution distribuée et une indépendance de la mise en oeuvre 
 
-\subsection{Modélisation des stratégies de récupération basées sur QoS}
+\section{Modélisation des stratégies de récupération basées sur QoS}
 
 Après les évolutions des recherches, les auteurs ont découvert a travers leur étude qu'il y a des impacts des différentes stratégies de récupération sur les services Web composite et plus précisément sur sa qualité de service (QoS). C'est pour cela ils ont décidé de proposer une approche pour une décision dynamique des stratégies de récupération.
 
@@ -91,9 +96,9 @@ Il existe trois diagnostics possibles qui correspondent au trois états d'un sys
 
 
 
-\subsection{Évaluation expérimentale }
+\section{Évaluation expérimentale }
 
-Les chercheurs ont mis leur approche en évaluation expérimentale, et ça par la mise en oeuvre du Framework  en utilisant un cas d'étude qui consiste un sénario et un environnement.
+Les chercheurs ont mis leur approche en évaluation expérimentale, et ça par la mise en oeuvre du Framework  en utilisant un cas d'étude qui consiste un scénario et un environnement.
 L'observation du cas d'étude a été sur trois systèmes différent :
 
 Système sans tolérance au pannes : c'est un système qui n'a aucun mécanisme de tolérance aux pannes. et dans le cas ou un des services composants tombe en panne, une exception sera générée et l'exécution sera terminé.
@@ -106,5 +111,16 @@ Système auto-correctif :  c'est un système qui se base sur l'ensemble d'inform
 Les résultat de l'évaluation expérimentale ont montré : l'importance et la nécessité d'avoir des mécanisme de tolérance aux pannes pour les services Web composite, ainsi que la manière avec laquelle les deux approches des propriétés transactionnelles et l'auto-corrective gèrent les pannes et prennent la décision de récupération.
 L'évaluation expérimentale faite pendant cette étude suggère que la combinaison des propriétés transactionnelles avec des capacités d'auto-corrective permet de donner une intelligence aux systèmes d'exécution pour gérer les exigences de haut niveau pour les exécutions de services Web composites avec une intervention humaine minimale\cite{1}.
 
-\subsection{Conclusion}
+\section{Conclusion}
+
+Pendant cette étude, les auteurs ont proposé une approche auto corrective pour l'exécution de services Web composite qui se base sur les propriété transactionnelles des services Web composants ainsi que sur une base d'informations sur les Services Web qui se présente principalement dans la Qualité de chaque service QoS.
+
+L'avantage principale de cette étude c'est la mise en oeuvre des mécanismes de d'exécution et de récupération qui sont capables de fonctionner d'une manière automatique, ces mécanismes sont mis en place a travers un Framework qui se base sur des agents de services qui sont en charge du contrôle de l'exécution  et de la tolérance en pannes, ces agents prennent un ensemble d'informations en entrée pour qu'il puissent les analyser et en déduire des nouvelles informations qui vont permettre une prise de décision lors de l'exécution.
+
+Cet étude est considérée comme une base pour le sujet de recherche du présent mémoire, qui visent le même objectif de l'auto-corrective, et qui se situe dans les principaux perspectives de cette étude.
+
+Le mémoire est l'un des principaux perspectives de l'étude présentée dans l'état de l'art car il se base sur l'ensemble des données générées par le système d'exécution de services Web composites mis en place pendant l'étude expérimentale précédente. Donc l'objectif sera collecter et stocker les données générées, les traiter et les analyser à l'aide des outils de l'auto apprentissage (Machine Learning) pour en pouvoir prédire la bonne décision de stratégie de récupération.
+
+
+
 
