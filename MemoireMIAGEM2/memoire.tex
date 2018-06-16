@@ -7,12 +7,17 @@
 \usepackage[utf8]{inputenc}             % The input file is in utf-8
 \usepackage{marvosym}                   % This package provides some symbols. The € is 
 \DeclareUnicodeCharacter{20AC}{\EUR{}} 
-\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
 \usepackage[T1]{fontenc}
 \usepackage[frenchb]{babel} % If you write in French
 %\usepackage[english]{babel} % If you write in English
 \usepackage{a4wide}
 \usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
 \graphicspath{{images/}}
 \usepackage{subfig}
 \usepackage{tikz}
@@ -168,11 +173,13 @@ urlcolor=black}
 
 \begin{titlepage}
 \begin{center}
+\includegraphics[width=0.25\textwidth]{images/universite}
+
 \vfill
 
 {\large Université de Paris Ouest Nanterre La Défense}\\[0.5cm]
 
-{\large Mémoire}\\[0.5cm]
+{\large Mémoire Master 2 MIAGE}\\[0.5cm]
 
 
 
@@ -192,7 +199,7 @@ urlcolor=black}
     \emph{Réalisé par :}\\
 - Nadia \textsc{MASLOUHI}\\
 \end{minipage}%
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.7\textwidth}
    \large
     \emph{Encadrants :} \\
 - Mme.~Castillo Marta \textsc{RUKOZ}
@@ -205,6 +212,8 @@ urlcolor=black}
 \vfill
 \vfill
 % Bottom of the page
+\large{ 18 juin 2018}
+
 
 \end{center}
 \end{titlepage}
@@ -212,10 +221,19 @@ urlcolor=black}
 
 \chapter*{Remerciements}
 
+Je tiens en premier lieu à remercier Mme Castillo Marta RUKOZ mon encadrante pédagogique pour sa proposition de sujet de mémoire d'une part, et pour son suivi durant la période de réalisation d'autre part.
 
-Je tiens à remercier toutes les personnes qui m’ont aidée lors de la rédaction de ce mémoire. 
+J'aimerais également remercier tous les professeurs qui m'ont enseigné et qui m'ont aidé a travers leurs conseils pour l'amélioration de ce travail.
 
-...
+Je tiens à remercier vivement ma famille et mes amis qui m’ont soutenue et m’ont encouragée pendant cette période.
+
+Enfin, je tiens à remercier toutes les personnes qui m’ont aidée lors de la rédaction de ce mémoire. 
+
+
+\chapter*{Résumé}
+
+\textbf{Mots clés : Service Web Composite, Tolérance aux pannes, stratégie de récupération, Machine Learning }
+
 
 \tableofcontents
 \listoffigures
@@ -227,11 +245,11 @@ Je tiens à remercier toutes les personnes qui m’ont aidée lors de la rédact
 \pagestyle{fancy}
 
 
-\include{intro}
+\include{introduction}
 \include{Concept}
 \include{Etat_de_l'art}
-\include{outillage}
-
+\include{Realisation}
+\include{Conclusion}
 
 \appendix
 
