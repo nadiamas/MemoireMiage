@@ -3,14 +3,17 @@
 
 \chapter{introduction}
 
-Les web services sont un ensemble de fonctionnalités de programmes informatiques permettant à des applications et des systèmes de fonctionner et d'échanger des informations à distance.
+Dans les années 2000, les chercheurs et les ingénieurs informatiques ont commencé à réfléchir au remplacement des interactions manuelles humaines par des processus automatisés, ce qui a poussé IBM à introduire le concept de l'informatique autonome. ils ont présenté l'approche de l'auto gestion qui présente le pilier principale de l'informatique autonome, qui se compose à son tour par quatre aspects: auto-configuration, auto-optimisation, auto-guérison, et auto-protection.
 
-Un utilisateur de web service peut être satisfait par la réponse d’un web service comme il ne le peut pas être, si sa requête est beaucoup plus complexe, et dans ce cas la solution c’est d’utiliser des web services composite, obtenu en combinant un ensemble des web services disponibles.
+Dans ce mémoire, on va se concentré sur la propriété d'auto-guérison, qui représente la capacité du système à détecter, analyser et réparer les pannes d'une manière automatique.
 
-Pendant l'exécution des Web services composites (CWS), l’un des Web services composant peut échouer ou tomber en panne, c’est pour cela il existe des différentes stratégies de récupération pour dépasser le problème (RollBack, Substitution, Cheekpoint).
+Récemment les chercheurs ont montré qu'un comportement autonome d'un système est l'une des plus importantes tendances qui formeront l'avenir de l'Internet des Objet dans les prochaines années.
 
-Chaque stratégie se comporte d’une manière différente selon les différents scénarios d’exécution, ce qui influence sur la qualité de service.
+Cela montre que l'approche de l'auto-guérison à une grande importance sur la performance et la réduction de la complexité d'un logiciel.
 
-Notre objectif est de déterminer d’une manière dynamique  la meilleure stratégie de récupération  dans le cas d’une défaillance d’un Web service, en analysant  plusieurs niveaux d'informations comme l’état de l'environnement, l’état d'exécution et les différents critères de qualité de service.
+R.Angarita, M.Rukoz et Y.Cardinale sont des chercheurs dans le domaine de l'auto-guérison des systèmes, plus précisément l'auto-guérison des services Web composites. ils ont proposé récemment une approche d'exécution auto-corrective qui se base sur des agents qui prennent en charge l'exécution des services composites, en se basant sur une base de connaissance contenant un ensemble d'informations sur les services et leurs contextes d'exécution, pour prendre la décision sur le choix de la stratégie de récupération en cas de panne.
 
-Notre étude va se basé sur les outils de Machine Learning pour prédire la meilleure stratégie en cas de défaillance, pour cela il est indispensable de collecter et traiter l’ensemble des données et des informations descriptives de l’environnement, l’exécution, et les critères de qualité de service, pour cet étape on va travailler avec l’outil Pentaho.
+Notre sujet de mémoire se base sur cet approche, on a pour objectif l'exploitation de l'ensemble des données générées par les agents d'exécution des services composites, afin de les analyser et les utilisés pour un apprentissage automatique, pour pouvoir construire un modèle qui nous permettra ensuite de prédire le mécanisme de récupération.
+
+Notre étude va se baser sur les outils de Machine Learning pour prédire la stratégie de récupération en cas de défaillance.
+Le présent mémoire est constitué de quatre chapitres principaux, Le premier consiste les différents concepts des services web composites ainsi que leurs tolérance au pannes, Le deuxième chapitre présente l'état de l'art du mémoire dans laquelle on décrit l'approche existante de l'auto-corrective des services Web, le troisième chapitre contient les différentes étapes de réalisation pour prédire le mécanisme de récupération, dernièrement on termine par une conclusion en citant nos limites et nos perspectives pour ce sujet.
