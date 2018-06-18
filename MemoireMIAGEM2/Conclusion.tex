@@ -2,6 +2,22 @@
 
 \section{Conclusion générale}
 
+Ce mémoire avait pour ambition de proposer comment peut on exploité une base d'informations générée pour décider une stratégie de récupération, dans le cas d'une panne sur les services composites. 
 
-\section{Limites et Perspective}
+Pour répondre a cette question, nous avons proposé une approche prédictive du mécanisme de récupération des services Web composites en cas de panne, notre étude se base sur l'approche auto-corrective (self healing) de l'exécution des services composites, qui a proposé un exécuteur basé sur des agents à base de connaissances capables d'analyser l'exécution d'un service composite, et de déduire de nouvelles informations à partir de cette analyse, ces informations ont un rôle crucial dans le processus de prise de décision lors de l'exécution, et c'est au niveau de cette phase qu'intervient notre contribution présentée dans ce mémoire, nous avons exploité toutes ces informations pour en pouvoir construire un modèle de classement par mécanisme de récupération, afin de prédire en cas de panne la stratégie de récupération qui vas être mise en pratique. 
+
+Ainsi nous avons mis oeuvre des algorithmes de l'auto apprentissage (Machine Learning) pour la prise de décision d'une manière dynamique et automatique sans avoir besoin d'intervention humaine.
+
+La réalisation du présent mémoire m'a permet de rentré dans le monde de l'intelligence artificielle, en découvrant les différents domaines de problématiques de l'apprentissage automatique, ainsi que les algorithmes spécifiques à chaque famille de problématiques, sans oublier les méthodes statistiques d'évaluation des performances des modèles obtenus.
+
+\section{Limites et Perspective }
+
+La limite la plus importante de ce mémoire se situe au niveau de la phase de traitement et d'analyse des données pour l'apprentissage automatique.
+L'équipe des chercheurs responsables du projet de l'exécuteur auto-corrective, avec lesquels on travaille, et sur leurs données générées qu'on se base pour l'auto apprentissage, ont eu des problèmes au niveau de stockage du coups ils ont perdu l'ensemble des données concernées.
+
+Donc la réalisation a été basée sur des données qui sont générées d'une manières aléatoire, pour bien décrire le processus suivis de la mis en oeuvre de l'apprentissage automatique a travers les outils déployés (Pentaho/WEKA).
+Mais le résultat final de l'analyse qui consiste le choix de l'algorithme le plus précis pour prédire la stratégie de récupération reste une hypothèse ouverte puisque nos données sont aléatoire.
+ 
+Nos perspectives sont sur le même niveau que nos limites, on envisage obtenir des données qui sont réelles générées par l'exécuteur d'auto-corrective pour pouvoir sélectionnée un modèle de prédiction définitif, sur lequel on peux se baser pour prendre les décisions de choix du mécanisme de récupération en cas de panne des services Web composites.
+
 
