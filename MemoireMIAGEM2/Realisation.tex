@@ -5,7 +5,7 @@ Notre étude a pour objectif la prédiction de la meilleure stratégie de récup
 
 L'approche proposée par le présent mémoire se base sur les notions de l'auto-apprentissage (Machine Learning). L'ensemble des données générées dans l'étude précédente ( cité dans le chapitre "État de l'art"), seront traitées et exploitées pour un apprentissage, afin de prédire d'une manière automatique et dynamique le mécanisme de récupération le mieux adapté.
 
-ce chapitre présente les différents types de problèmes d'auto-apprentissage, et la famille de problématique dans laquelle s'oriente notre approche de prédiction,et décris les deux étapes principales de l'approche, le traitement et l'intégration des données en utilisant Pentaho et la prédiction des mécanismes de récupération en appliquant les algorithmes de Machine Learning via l'outil Weka. 
+Ce chapitre présente les différents types de problèmes d'auto-apprentissage, et la famille de problématique dans laquelle s'oriente notre approche de prédiction,et décris les deux étapes principales de l'approche, le traitement et l'intégration des données en utilisant Pentaho, et la prédiction des mécanismes de récupération en appliquant les algorithmes de Machine Learning via l'outil Weka. 
 
 
 \section{L'auto Apprentissage -Machine Learning- }
@@ -25,32 +25,32 @@ Pour bien définir un problème de machine learning, il faut bien définir quatr
 - La mesure de performance
 
 
-Les données : représente l'ensemble de base d'information sur lesquelles se base l'apprentissage automatique, notre approche se base sur les données générées par le système d'exécution des services Web Composite cité dans l'Etat de l'art.
+\textbf{Les données : } représente l'ensemble de base d'information sur lesquelles se base l'apprentissage automatique, notre approche se base sur les données générées par le système d'exécution des services Web Composite cité dans l'Etat de l'art.
 
-La tache spécifique : Le Machine Learning a besoin de la définition d'une tâche spécifique à accomplir c'est à dire  qu'est ce qui peut répondre au problème, une tâche peut être sous forme d'une prédiction, identification, recommandation... 
+\textbf{La tache spécifique : } Le Machine Learning a besoin de la définition d'une tâche spécifique à accomplir c'est à dire  qu'est ce qui peut répondre au problème, une tâche peut être sous forme d'une prédiction, identification, recommandation... 
 
-L'algorithme : Après la définition de la tâche spécifique et les données nécessaires pour la traiter, On peut passer à la troisième étape qui consiste le choix d'un algorithme spécifique qui va pouvoir répondre à la tache à partir des données collectée. il existe plusieurs algorithmes de Machine Learning ( Réseau de neurones, Support vector machine, Régression linéaire ... ), le choix de l'algorithme dépend de la nature et le type de la problématique de machine Learning.
+\textbf{L'algorithme :} Après la définition de la tâche spécifique et les données nécessaires pour la traiter, On peut passer à la troisième étape qui consiste le choix d'un algorithme spécifique qui va pouvoir répondre à la tache à partir des données collectée. il existe plusieurs algorithmes de Machine Learning ( Réseau de neurones, Support vector machine, Régression linéaire ... ), le choix de l'algorithme dépend de la nature et le type de la problématique de Machine Learning.
 
-La mesure de performance : Une fois l'algorithme est déterminé, il faut choisir une mesure de performance relativement à la tache définie précédemment en s'appuyant sur des métriques précises.  
+\textbf{La mesure de performance :} Une fois l'algorithme est déterminé, il faut choisir une mesure de performance relativement à la tache définie précédemment en s'appuyant sur des métriques précises.  
 
-Un process de Machine Learning passe par deux phases principales, La première phase c'est la phase où l'être humain sera responsable du choix et de l'entraînement de l'algorithme d'apprentissage, pour que le traitement de la tache spécifique sera appris à partir de l'apprentissage (Training set), pour que l'algorithme dans la deuxième phase effectue la tâche lui même.
+Un processus de Machine Learning passe par deux phases principales, La première phase c'est la phase où l'être humain sera responsable du choix et de l'entraînement de l'algorithme d'apprentissage, pour que le traitement de la tache spécifique sera appris à partir de l'apprentissage (Training set), pour que l'algorithme dans la deuxième phase effectue la tâche lui même.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=1\linewidth]{images/auto apprentissage.png}
+\includegraphics[width=1\linewidth]{images/autoapprentissage.png}
 \end{center}
 \caption{Processus du Machine Learning}
 \label{fig:6}
 \end{figure}
 
 
-\subsection{Base d'information de contexte des Services Web Composite}
+\subsection{Base d'information de contexte des Services Web Composites}
 
 La prédiction de la stratégie de récupération va être basée sur un ensemble de données de base de connaissances des services Web composites.
 
-D'après l'approche de l'auto-corrective (self-healing) citée dans le chapitre précèdent, qui démontre et étudie l'impact des stratégies de récupération sur les services composites, et propose un modèle de décision de mécanisme de récupération en terme d'impact sur la QoS des services composites, dans cette approche, les agents de service sont agents qui se base dur des connaissance. ils décident la stratégie de tolérance aux pannes en se basant sur les information qu'ils ont sur eux-même, sur le service Web composite, et sur ce qui est attendu et ce qu'il se passe réellement pendant l'exécution.\cite{1}
+D'après l'approche de l'auto-corrective (self-healing) citée dans le chapitre précèdent, qui démontre et étudie l'impact des stratégies de récupération sur les services composites, et propose un modèle de décision de mécanisme de récupération en terme d'impact sur la QoS des services composites, dans cette approche, les agents de service sont des agents qui se base dur des connaissances, ils décident la stratégie de tolérance aux pannes en se basant sur les informations qu'ils ont sur eux-même, sur le service Web composite, et sur ce qui est attendu et ce qu'il se passe réellement pendant l'exécution.\cite{1}
 
-Notre Approche va se baser sur l'ensemble des données générées précédemment par ce système d'exécution, qui décrivent le comportement des services Web composites et leurs composants, ainsi que les stratégies de récupération et leur impact sur l'exécution du service composite, pour qu'on puisse s'en servir pour l'auto apprentissage afin de prédire la récupération pour des nouvelles informations des nouveaux Web service Composite.
+Notre Approche va se baser sur l'ensemble des données générées précédemment par ce système d'exécution, qui décrivent le comportement des services Web composites et leurs composants, ainsi que les stratégies de récupération et leur impact sur l'exécution du service composite, pour qu'on puisse s'en servir pour l'auto apprentissage afin de prédire la récupération pour des nouvelles informations des nouveaux Web services composites.
 
 \subsubsection{La classification des informations de contexte}
 
@@ -147,7 +147,7 @@ Et permet la création de deux types de processus :
     
 \end{itemize}
 
-\textbf{Utilité :}
+\textcolor{Orange}{\textbf{Utilité :}}
 
 Pour notre mémoire, l'utilité de Pentaho c'est le pouvoir de collecter et intégrer l'ensemble des données concernant les Services Web Composites, et leurs services composants. Ensuite l'extraction des variables pertinentes citées au dessus, pour qu'on puisse avoir un entrepôt de données final, qui va s'en servir comme un échantillon d'apprentissage.
 
@@ -163,17 +163,16 @@ La première distinction à faire dans les problèmes de Machine Learning, c'est
 
 - \textbf{L'apprentissage supervisé : }exploite exclusivement l'ensemble des données dites annotées de leur sorties pour pouvoir construire un modèle, c'est à dire que chaque donnée est associée à une classe cible ou une catégorie et l'objectif c'est que l'algorithme soit capable de prédire cette classe sur des nouvelles données qui ne sont pas annotées a partir du modèle qui a construit précédemment.
 
-\textit{Représentation Mathématique :} 
+\textit{Représentation Mathématique : }
     
-    On reçoit en entré des données d'exemple annotées:
-    (x1,y1),(x2,y2),(x3,y3), ... et on veut prédire la sortie sur des nouvelles données :  x* --> y* 
-    
+    \textit{On reçoit en entré des données d'exemple annotées:
+    (x1,y1),(x2,y2),(x3,y3), ... et on veut prédire la sortie sur des nouvelles données :  x* --> y* }
 
 - \textbf{L'apprentissage non-supervisé : } est beaucoup plus complexe puisque les données d'entrées ne sont pas annotées. l'algorithme d'entraînement va devoir dans ce cas  trouver  les similarités et distinctions au sein de ces données, et à organiser et regrouper ensemble celles qui partagent des caractéristiques communes.
 
 \textit{Représentation Mathématique : }
     
-    On reçoit en entré uniquement des données brutes de variables aléatoire : x1,x2,x3,... et on veut avoir la relation avec des variables latentes structurelles :  xi --> yi 
+   \textit{ On reçoit en entré uniquement des données brutes de variables aléatoire : x1,x2,x3,... et on veut avoir la relation avec des variables latentes structurelles :  xi --> yi }
     
 En plus de ces deux principales familles d'algorithmes (Supervisé/non-Supervisé) il existe d'autre types d'apprentissage, l'apprentissage semi-supervisé qui prend en entré un mélange de données annotées et non annotées, et l'apprentissage par renforcement qui se base sur un cycle d'expériences et de récompenses, et s'auto améliore à chaque itération.
 
@@ -184,7 +183,7 @@ En plus de ces deux principales familles d'algorithmes (Supervisé/non-Supervis�
 \includegraphics[width=0.8\linewidth]{images/ClassReg.png}
 \end{center}
 \caption{Différence entre Classification et Régression}
-\label{fig:6}
+\label{fig:7}
 \end{figure}
 
 - \textbf{Classification :} Chaque observation ou donnée  est associée à une et une seule modalité (appelée classe/catégorie), La classification c'est le type de problème dans lequel la sortie attendu de l'algorithme est discrète c'est à dire elle est sous forme d'une catégorie ou classe.
@@ -202,7 +201,7 @@ D'après cet analyse on peut situer notre problème de Machine Learning dans la 
 Il existe plusieurs algorithmes qui permettent la construction d'un modèle de classification, on  a sélectionne les six algorithmes les plus importants pour notre problématique de classification : 
 
    	
-\textbf{Forêt aléatoire (Randomforest) :}
+\textcolor{Orange}{\textbf{Forêt aléatoire (Randomforest) :}}
 
 L’algorithme des forêts aléatoires ou forêt d’arbres décisionnels (Random Forest ) est un algorithme très récent (2000) pour la  classification et la régression, Random Forest utilise des stratégies de bagging c'est à dire c’est de faire la moyenne des prévisions de plusieurs modèles indépendants pour réduire la variance des prévisions d'un arbre de décision et donc l’erreur de prévision, améliorant ainsi leurs performances.
 
@@ -214,40 +213,40 @@ Cet algorithme est particulièrement performant pour les problématiques de pré
 \includegraphics[width=0.8\linewidth]{images/randomforest.png}
 \end{center}
 \caption{Algorithme des Forêts aléatoires}
-\label{fig:7}
+\label{fig:8}
 \end{figure}
 
-\textbf{L'arbre de décision (Decision tree) : }
+\textcolor{Orange}{\textbf{L'arbre de décision (Decision tree) : }}
 
-Les arbres de décision sont un type d'apprentissage automatique supervisé où les données sont divisées en continu selon un certain paramètre. L'arbre peut être expliqué par deux entités, à savoir les nœuds de décision et les feuilles. Les feuilles sont les décisions ou les résultats finaux. Et les nœuds de décision sont la partie ou les données sont divisées.
+Les arbres de décision sont un type d'apprentissage automatique supervisé où les données sont divisées en continu selon un certain paramètre. L'arbre peut être expliqué par deux entités, à savoir les nœuds de décision et les feuilles. Les feuilles sont les décisions ou les résultats finaux. Et les nœuds de décision sont la partie ou les données sont divisées \cite{11}.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.8\linewidth]{images/treedecision.JPG}
 \end{center}
 \caption{Algorithme des arbres de décision}
-\label{fig:8}
+\label{fig:9}
 \end{figure}
 
 
-\textbf{Machine à vecteurs de support (Support vector machines ) : }
+\textcolor{Orange}{\textbf{Machine à vecteurs de support (Support vector machines ) : }}
 
-Support Vector Machine (SVM) est un algorithme d'apprentissage automatique supervisé qui peut être utilisé pour les défis de classification ou de régression. Cependant, il est principalement utilisé dans les problèmes de classification. Dans cet algorithme, chaque élément de données est tracé comme un point dans un espace à n dimensions (où n est le nombre d'entités) avec la valeur de chaque entité étant la valeur d'une coordonnée particulière. Ensuite, une classification est effectuée en trouvant l'hyper-plan qui différencie très bien les deux classes
+Support Vector Machine (SVM) est un algorithme d'apprentissage automatique supervisé qui peut être utilisé pour les défis de classification ou de régression. Cependant, il est principalement utilisé dans les problèmes de classification. Dans cet algorithme, chaque élément de données est tracé comme un point dans un espace à n dimensions (où n est le nombre d'entités) avec la valeur de chaque entité étant la valeur d'une coordonnée particulière. Ensuite, une classification est effectuée en trouvant l'hyper-plan qui différencie très bien les deux classes.
 
 Les vecteurs de support sont les coordonnées de l'observation individuelle. Support Vector Machine est une frontière qui sépare le mieux les deux classes (hyper-plane / ligne).
 
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=1\linewidth]{images/SVM.png}
+\includegraphics[width=0.8\linewidth]{images/SVM.png}
 \end{center}
 \caption{Algorithme de Machine à vecteurs de support}
-\label{fig:9}
+\label{fig:10}
 \end{figure}
 
 
 
-\textbf{Réseau de neurones (neural network) : }
+\textcolor{Orange}{\textbf{Réseau de neurones (Neural Network) : }}
 
 Il y a eu récemment un grand Buzz autour des "réseaux de neurones" dans le domaine de l'informatique et plus précisément dans domaine du Machine Learning, et il a attiré beaucoup d'attention de la part de nombreuses personnes.
 
@@ -258,7 +257,7 @@ Essentiellement, les réseaux de neurones sont composés de couches d'unités de
 \includegraphics[width=0.7\linewidth]{images/RN.png}
 \end{center}
 \caption{Algorithme de Réseau de neurones}
-\label{fig:10}
+\label{fig:11}
 \end{figure}
 
 
@@ -267,7 +266,7 @@ Les réseaux de neurones se caractérise par un processus d'apprentissage itéra
 Les avantages des réseaux de neurones comprennent leur grande tolérance aux données bruitées, ainsi que leur capacité à classer les modèles sur lesquels ils n'ont pas été formés.
 
 
-\textbf{Les K plus proches voisins (K-Nearest Neighbors KNN) :}
+\textcolor{Orange}{\textbf{Les K plus proches voisins (K-Nearest Neighbors KNN) :}}
 
 K plus proches voisins est un algorithme d’apprentissage supervisé. En abrégé k-NN ou KNN.
 Le fonctionnement de cet algorithme se base sur un ensemble de données d'apprentissage constituée de N couples «entrée-sortie». Pour estimer la sortie associée à une nouvelle entrée x, l'algorithme des k plus proches voisins se base sur la mesure de similarité, et prend en compte (de façon identique) les k échantillons d'apprentissage dont l’entrée est la plus proche de la nouvelle entrée x, selon une distance à définir.
@@ -275,16 +274,16 @@ Le fonctionnement de cet algorithme se base sur un ensemble de données d'appren
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=1\linewidth]{images/KNN.png}
+\includegraphics[width=0.8\linewidth]{images/KNN.png}
 \end{center}
 \caption{Classification par KNN}
-\label{fig:10}
+\label{fig:12}
 \end{figure}
 
 
 Par exemple, dans un problème de classification, on retiendra la classe la plus représentée parmi les k sorties associées aux k entrées les plus proches de la nouvelle entrée x.
 
-\textbf{Classification naïve bayésienne (Naive Bayes Classification) : }
+\textcolor{Orange}{\textbf{Classification naïve bayésienne (Naive Bayes Classification) : }}
     
 L'algorithme de naïve Bayes est un algorithme de classification supervisée qui se base sur le théorème de Bayes. Ce dernier est considéré comme un résultat de base en théorie des probabilités. Ce théorème est fondé sur les probabilités conditionnelles qui consiste à savoir la probabilité qu'un événement se produise sachant qu'un autre événement s’est déjà produit.
 
@@ -304,11 +303,11 @@ Après l'exécution de chaque algorithme de Machine Learning, on est censé choi
 
 \subsection{WEKA}
 
-Pentaho Data Mining, est basé sur le projet WEKA, c'est un ensemble complet d'outils pour l'apprentissage automatique et l'exploration de données. Sa large gamme de règles de classification, de régression, d'association et de clustering peut être utilisée pour mieux comprendre l'activité et être exploitée pour améliorer les performances futures grâce à l'analyse prédictive.
+Pentaho Data Mining, est basé sur le projet WEKA, c'est un ensemble complet d'outils pour l'apprentissage automatique et l'exploration de données. Sa large gamme de règles de classification, de régression, d'association et de clustering peut être utilisée pour mieux comprendre l'activité et être exploitée pour améliorer les performances futures grâce à l'analyse prédictive \cite{10}.
 
 WEKA est un outil qui permet d'exécuter des algorithmes de Machine Learning sur un ensemble de données. Il est ainsi possible d’isoler des populations ou d’extraire des règles à partir des données contenues dans un entrepôt de données. 
 
-WEKA est présenté sous forme d’une application indépendante, disposant d’une interface utilisateur graphique ou en ligne de commande.
+WEKA est présenté sous forme d’une application indépendante, disposant d’une interface utilisateur graphique ou en ligne de commande \cite{9}.
 
 
 \begin{figure}[H]
@@ -316,7 +315,7 @@ WEKA est présenté sous forme d’une application indépendante, disposant d’
 \includegraphics[width=1\linewidth]{images/weka1.JPG}
 \end{center}
 \caption{Importation des données sur Weka}
-\label{fig:11}
+\label{fig:13}
 \end{figure}
 
 Après l'importation des données dans WEKA, ce dernier offre a travers les six onglets au-dessus les différentes étapes du processus d'apprentissage, soit un apprentissage supervisé ou non. 
@@ -337,7 +336,7 @@ Le deuxième onglet de Weka "Classify" permet d'accéder à la fenêtre où on p
 \includegraphics[width=1\linewidth]{images/wekaClassifier.PNG}
 \end{center}
 \caption{WEKA Classifier}
-\label{fig:12}
+\label{fig:14}
 \end{figure}
 
 Dans cet étape on va exécuter tous les algorithmes précédents on choisissant une option de test pour les données, pour qu'on puisse faire une comparaison qui se base sur une mesure de performance qui sera à la fois la mesure de précision et la matrice de confusion. 
@@ -350,7 +349,7 @@ Dans cet étape on va exécuter tous les algorithmes précédents on choisissant
 \includegraphics[width=0.5\linewidth]{images/TestOptions.PNG}
 \end{center}
 \caption{Options de Test WEKA}
-\label{fig:13}
+\label{fig:15}
 \end{figure}
 
 
@@ -408,7 +407,7 @@ Lorsqu'on évalue un algorithme de Machine Learning sur un problème de classifi
 \includegraphics[width=1\linewidth]{images/summaryPerf.PNG}
 \end{center}
 \caption{Résumé des performances de classification pour un modèle}
-\label{fig:14}
+\label{fig:16}
 \end{figure}
 
 Pour la classification, il existe trois aspects principaux dans le bilan de performance du modèle:
@@ -438,7 +437,7 @@ WEKA mis en disposition plusieurs algorithmes de Machine Learning, algorithme de
 \includegraphics[width=1\linewidth]{images/algorithme.PNG}
 \end{center}
 \caption{Choix de l'algorithme de classification}
-\label{fig:15}
+\label{fig:17}
 \end{figure}
 
 Tous les algorithmes présentés dans la section "Algorithme de classification"  (Random forest, Decision tree, Support vector machines, neural network, KNN, Naive Bayes) sont disponibles dans WEKA en cliquant sur le bouton "choose". L'objectif c'est de les pouvoir exécuter et récupérer leurs performances.
@@ -452,7 +451,7 @@ Après l'exécution de l'algorithme Random forest sur notre échantillon de donn
 \includegraphics[width=0.8\linewidth]{images/perfRF.PNG}
 \end{center}
 \caption{Performance de Random Forest}
-\label{fig:16}
+\label{fig:166}
 \end{figure}
 
 
@@ -465,7 +464,7 @@ L'algorithme Decision Tree, a donné 27\% de précision après son exécution.
 \includegraphics[width=0.8\linewidth]{images/perfDecTree.PNG}
 \end{center}
 \caption{Performance de Decision Tree}
-\label{fig:17}
+\label{fig:27}
 \end{figure}
 
 
@@ -516,13 +515,13 @@ L'algorithme Decision Tree, a donné 32\% de précision après son exécution.
 \label{fig:21}
 \end{figure}
 
-Résultat : 
+\textcolor{Orange}{\textbf{Résultat :}} 
 
 D'après les résultats obtenus après l'exécution de chaque algorithme on a résumé les précisions dans le tableau suivant : 
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.7\linewidth]{images/stat.PNG}
+\includegraphics[width=0.6\linewidth]{images/stat.PNG}
 \end{center}
 \caption{Tableau concluant la précision des algorithme}
 \label{fig:22}
